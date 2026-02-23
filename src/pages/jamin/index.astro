@@ -10,8 +10,8 @@ const projects = await getCollection('projects');
 
 <Layout title="JAMIN YAURI // MECHATRONICS & AI ARCHITECT">
 	<main class="overflow-x-hidden relative">
-		<!-- THE TECHNICAL GUIDE LINE -->
-		<div class="fixed bottom-[10%] left-0 w-full h-px bg-neutral-900 z-50 pointer-events-none">
+		<!-- THE TECHNICAL GUIDE LINE (desktop only) -->
+		<div class="hidden md:block fixed bottom-[10%] left-0 w-full h-px bg-neutral-900 z-50 pointer-events-none">
 			<div id="guide-progress" class="absolute top-0 left-0 h-full bg-accent-yellow/20 w-0"></div>
 			
 			<!-- THE MECHANICAL TRACKER (The "Bee" concept simplified) -->
@@ -34,7 +34,7 @@ const projects = await getCollection('projects');
 			</div>
 		</div>
 
-		<div id="horizontal-wrapper" class="flex flex-nowrap h-screen">
+		<div id="horizontal-wrapper" class="flex flex-col md:flex-nowrap md:h-screen">
 			<Hero />
 			
 			{projects.map((project) => (
@@ -109,6 +109,9 @@ const projects = await getCollection('projects');
 	gsap.registerPlugin(ScrollTrigger);
 
 	const initExperience = () => {
+		// On mobile: skip horizontal scroll, use natural vertical layout
+		if (window.innerWidth < 768) return;
+
 		const wrapper = document.getElementById('horizontal-wrapper');
 		if (!wrapper) return;
 

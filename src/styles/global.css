@@ -29,7 +29,26 @@
 }
 
 .panel {
-  @apply min-w-screen h-screen flex-shrink-0 relative flex items-center px-12 md:px-24 overflow-y-auto overflow-x-hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+@media (min-width: 768px) {
+  .panel {
+    min-width: 100vw;
+    height: 100vh;
+    min-height: unset;
+    flex-shrink: 0;
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
 }
 
 .text-reveal {
