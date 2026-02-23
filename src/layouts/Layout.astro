@@ -15,11 +15,42 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Jamin Yauri Portfolio - Mechatronics & AI" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<!-- SEO -->
+		<meta name="description" content="Portafolio de Jamin Yauricajas — Mecatrónica, Inteligencia Artificial y Robótica. PUCP, Peru." />
+		<meta name="author" content="Jamin Yauricajas" />
+		<meta name="keywords" content="Jamin Yauricajas, Jamin Yauri, Mecatrónica, Inteligencia Artificial, Robótica, PUCP, Peru, portafolio, ingeniero" />
+		<link rel="canonical" href="https://www.teamvastoria.com/" />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content="Jamin Yauricajas — Mechatronics & AI" />
+		<meta property="og:description" content="Portafolio de Jamin Yauricajas — Mecatrónica, Inteligencia Artificial y Robótica." />
+		<meta property="og:url" content="https://www.teamvastoria.com/" />
+		<meta property="og:type" content="website" />
+
+		<!-- JSON-LD Person Schema -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Jamin Yauricajas",
+			"alternateName": "Jamin Yauri",
+			"url": "https://www.teamvastoria.com",
+			"email": "jamin.yauri@pucp.edu.pe",
+			"jobTitle": "Mechatronics & AI Engineer",
+			"alumniOf": "PUCP",
+			"sameAs": [
+				"https://github.com/JaminYC",
+				"https://www.linkedin.com/in/jaminyauri/",
+				"https://www.instagram.com/jaminyauri/"
+			]
+		}
+		</script>
+
 		<ClientRouter />
 	</head>
 	<body class="bg-[#050505] text-[#D1D1D1] selection:bg-[#FFD700] selection:text-black antialiased">
