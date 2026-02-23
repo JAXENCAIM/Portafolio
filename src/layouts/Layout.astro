@@ -1,0 +1,32 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import Navigation from '../components/Navigation.astro';
+import '@fontsource/outfit';
+import '@fontsource/inter';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Jamin Yauri Portfolio - Mechatronics & AI" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ClientRouter />
+	</head>
+	<body class="bg-[#050505] text-[#D1D1D1] selection:bg-[#FFD700] selection:text-black antialiased">
+		<Navigation />
+		<slot />
+	</body>
+</html>
+<style is:global>
+	@import "../styles/global.css";
+</style>

@@ -1,0 +1,43 @@
+---
+const navItems = [
+	{ name: 'Home', href: '/' },
+	{ name: 'Stack', href: '/#stack' },
+	{ name: 'Github', href: 'https://github.com/JaminYC' },
+	{ name: 'LinkedIn', href: 'https://www.linkedin.com/in/jaminyauri/' },
+	{ name: 'Instagram', href: 'https://www.instagram.com/jaminyauri/' },
+];
+---
+
+<nav class="fixed top-12 right-12 z-[100] opacity-0" id="main-nav">
+	<ul class="flex flex-col items-end gap-2">
+		{navItems.map((item) => (
+			<li>
+				<a 
+					href={item.href} 
+					class="text-[10px] font-mono uppercase tracking-[0.4em] text-white hover:text-accent-yellow transition-colors duration-300"
+				>
+					{item.name}
+				</a>
+			</li>
+		))}
+		<li class="mt-4">
+			<div class="w-8 h-[1px] bg-accent-yellow"></div>
+		</li>
+	</ul>
+</nav>
+
+<script>
+	import { gsap } from 'gsap';
+
+	const initNav = () => {
+		gsap.to("#main-nav", {
+			opacity: 1,
+			duration: 1,
+			delay: 2,
+			ease: "power2.out"
+		});
+	};
+
+	initNav();
+	document.addEventListener('astro:after-swap', initNav);
+</script>

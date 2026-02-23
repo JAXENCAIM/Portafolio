@@ -1,0 +1,100 @@
+<div id="three-container" class="absolute inset-0 -z-20"></div>
+
+<script>
+	import * as THREE from 'three';
+
+	class HeroScene {
+		container: HTMLElement;
+		scene: THREE.Scene;
+		camera: THREE.PerspectiveCamera;
+		renderer: THREE.WebGLRenderer;
+		points: THREE.Points;
+		
+		constructor() {
+			this.container = document.getElementById('three-container')!;
+			this.scene = new THREE.Scene();
+			this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+			this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+			
+			this.init();
+			this.animate();
+			this.handleResize();
+		}
+
+		init() {
+			this.renderer.setSize(window.innerWidth, window.innerHeight);
+			this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+			this.container.appendChild(this.renderer.domElement);
+
+			// Geometría de puntos
+			const particlesCount = 2000;
+			const posArray = new Float32Array(particlesCount * 3);
+			
+			for(let i=0; i < particlesCount * 3; i++) {
+				posArray[i] = (Math.random() - 0.5) * 10;
+			}
+
+			const geometry = new THREE.BufferGeometry();
+			geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+			const material = new THREE.PointsMaterial({
+				size: 0.005,
+				color: '#00d1ff',
+				transparent: true,
+				opacity: 0.5,
+				blending: THREE.AdditiveBlending
+			});
+
+			this.points = new THREE.Points(geometry, material);
+			this.scene.add(this.points);
+
+			this.camera.position.z = 3;
+		}
+
+		handleResize() {
+			window.addEventListener('resize', () => {
+				this.camera.aspect = window.innerWidth / window.innerHeight;
+				this.camera.updateProjectionMatrix();
+				this.renderer.setSize(window.innerWidth, window.innerHeight);
+			});
+		}
+
+		animate() {
+			requestAnimationFrame(this.animate.bind(this));
+			
+			this.points.rotation.y += 0.001;
+			this.points.rotation.x += 0.0005;
+
+			// Movimiento sutil basado en el mouse
+			const tempX = (window.innerWidth / 2 - (window as any).mouseX || 0) * 0.0001;
+			const tempY = (window.innerHeight / 2 - (window as any).mouseY || 0) * 0.0001;
+			
+			this.camera.position.x += (tempX - this.camera.position.x) * 0.05;
+			this.camera.position.y += (-tempY - this.camera.position.y) * 0.05;
+
+			this.renderer.render(this.scene, this.camera);
+		}
+	}
+
+	// Seguimiento del mouse global
+	document.addEventListener('mousemove', (e) => {
+		(window as any).mouseX = e.clientX;
+		(window as any).mouseY = e.clientY;
+	});
+
+	// Inicializar en carga y después de transiciones
+	const initScene = () => {
+		if (document.getElementById('three-container')) {
+			new HeroScene();
+		}
+	};
+
+	initScene();
+	document.addEventListener('astro:after-swap', initScene);
+</script>
+
+<style>
+	#three-container {
+		pointer-events: none;
+	}
+</style>

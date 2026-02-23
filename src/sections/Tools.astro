@@ -1,0 +1,80 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const categories = [
+  {
+    name: "Web Development",
+    tools: [
+      { name: "React / Next.js", icon: "simple-icons:nextdotjs" },
+      { name: "Astro", icon: "simple-icons:astro" },
+      { name: "TypeScript", icon: "simple-icons:typescript" },
+      { name: "Tailwind CSS", icon: "simple-icons:tailwindcss" },
+      { name: "Node.js", icon: "simple-icons:nodedotjs" },
+      { name: "Supabase", icon: "simple-icons:supabase" }
+    ]
+  },
+  {
+    name: "Industrial / IoT",
+    tools: [
+      { name: "Python", icon: "simple-icons:python" },
+      { name: "Arduino / C++", icon: "simple-icons:arduino" },
+      { name: "Raspberry Pi", icon: "simple-icons:raspberrypi" },
+      { name: "MQTT", icon: "simple-icons:mqtt" },
+      { name: "PLC Programming", icon: "mdi:chip" }
+    ]
+  },
+  {
+    name: "Engineering & Design",
+    tools: [
+      { name: "Autodesk Inventor", icon: "simple-icons:autodesk" },
+      { name: "Fusion 360", icon: "ph:cube" },
+      { name: "Altium Designer", icon: "ph:cpu" },
+      { name: "MATLAB", icon: "mdi:function-variant" },
+      { name: "Figma", icon: "simple-icons:figma" }
+    ]
+  },
+  {
+    name: "Software & Others",
+    tools: [
+      { name: "Git", icon: "simple-icons:git" },
+      { name: "Docker", icon: "simple-icons:docker" },
+      { name: "LaTeX", icon: "simple-icons:latex" },
+      { name: "Power BI", icon: "simple-icons:powerbi" },
+      { name: "Microsoft Office", icon: "simple-icons:microsoft" },
+      { name: "Notion", icon: "simple-icons:notion" }
+    ]
+  }
+];
+---
+
+<section class="panel bg-bg-deep border-l border-neutral-900 flex flex-col justify-center px-12 md:px-24 overflow-hidden" id="stack">
+  <div class="mb-16">
+    <p class="text-[10px] font-mono uppercase tracking-[0.4em] text-accent-yellow mb-4">02. Stack</p>
+    <h2 class="text-6xl md:text-8xl font-black leading-none uppercase tracking-tighter">
+      MIS <br/> HERRAMIENTAS<span class="text-accent-yellow">.</span>
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 w-full max-w-7xl">
+    {categories.map((cat) => (
+      <div class="group">
+        <h3 class="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-8 border-b border-neutral-800 pb-2 group-hover:text-accent-yellow transition-colors flex items-center justify-between">
+          {cat.name}
+          <span class="text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+        </h3>
+        <ul class="space-y-4">
+          {cat.tools.map((tool) => (
+            <li class="flex items-center gap-4 group/item cursor-default overflow-hidden">
+              <span class="w-12 h-12 flex items-center justify-center bg-neutral-900/50 border border-neutral-800 rounded-xl group-hover/item:border-accent-yellow group-hover/item:bg-accent-yellow transition-all duration-300 p-3 text-neutral-400 group-hover/item:text-bg-deep">
+                <Icon name={tool.icon} title={tool.name} class="w-full h-full" />
+              </span>
+              <span class="text-lg md:text-xl font-medium text-neutral-400 group-hover/item:text-white transition-colors">
+                {tool.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>

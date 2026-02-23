@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-bg-deep: #050505;
+  --color-accent-yellow: #FFD700;
+  --color-text-dim: #D1D1D1;
+
+  --font-brutalist: "Outfit", sans-serif;
+  --font-serif-elegant: "IBMPlexSerif", serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-deep text-text-dim font-brutalist overflow-x-hidden;
+    background-color: #050505;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-bold uppercase tracking-tighter text-white;
+  }
+}
+
+.horizontal-scroll-section {
+  @apply flex flex-nowrap;
+  height: 100vh;
+}
+
+.panel {
+  @apply min-w-screen h-screen flex-shrink-0 relative flex items-center px-12 md:px-24 overflow-y-auto overflow-x-hidden;
+}
+
+.text-reveal {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.text-reveal-content {
+  display: block;
+}
+
+/* Scrollbar Hide */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

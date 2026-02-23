@@ -1,0 +1,81 @@
+---
+const pillars = [
+  { title: 'Salud', desc: 'Gym 4 días/semana como base de disciplina.' },
+  { title: 'Conocimiento', desc: 'Exploración constante de IA y Robótica.' },
+  { title: 'Relaciones', desc: 'Conexión humana auténtica y global.' },
+  { title: 'Satisfacción', desc: 'Propósito en cada línea de código y diseño.' }
+];
+
+const languages = [
+  { name: 'Inglés', level: 'Avanzado' },
+  { name: 'Francés', level: 'Intermedio' },
+  { name: 'Japonés', level: 'Principiante' },
+  { name: 'Chino', level: 'Principiante' }
+];
+---
+<section class="py-32 px-8 md:px-24 bg-neutral-50 dark:bg-neutral-900 transition-colors duration-500" id="about">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+      
+      <!-- Left Column: Biography -->
+      <div class="lg:col-span-7">
+        <h2 class="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-white mb-12 tracking-tight">
+          Exploración tecnológica <br/><span class="text-blue-600">con propósito.</span>
+        </h2>
+        
+        <div class="space-y-6 text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+          <p>
+            Soy un apasionado por la ingeniería que busca balancear la precisión técnica con la curiosidad humanística. Mi plan de vida a 10 años integra el desarrollo profesional con un bienestar integral.
+          </p>
+          <p>
+            Fuera de la ingeniería, me dedico a la música (piano y guitarra), la filosofía y la psicología. Además, soy un entusiasta de la cultura geek y el análisis visual de videojuegos.
+          </p>
+          
+          <div class="pt-8">
+            <h3 class="text-xs font-mono uppercase tracking-[0.3em] text-neutral-400 mb-6">Polyglot Journey</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {languages.map(lang => (
+                <div class="flex flex-col border-l border-neutral-200 dark:border-neutral-800 pl-4 py-2">
+                  <span class="text-neutral-900 dark:text-white font-medium">{lang.name}</span>
+                  <span class="text-xs text-neutral-500 italic">{lang.level}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Pillers & Global Education -->
+      <div class="lg:col-span-5 space-y-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {pillars.map(pillar => (
+            <div class="p-6 rounded-3xl bg-white dark:bg-neutral-950 border border-neutral-100 dark:border-neutral-800 shadow-sm">
+              <h3 class="text-neutral-900 dark:text-white font-bold mb-2">{pillar.title}</h3>
+              <p class="text-xs text-neutral-500 leading-relaxed">{pillar.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="p-8 rounded-3xl bg-blue-600 text-white space-y-6 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:scale-110 transition-transform">
+            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20"/>
+            </svg>
+          </div>
+          <h3 class="text-xs font-mono uppercase tracking-widest opacity-80">Formación Global</h3>
+          <ul class="space-y-6">
+            <li class="border-l border-white/20 pl-4">
+              <p class="font-bold">Intercambio Internacional</p>
+              <p class="text-sm opacity-80">Tecnológico de Monterrey (México) - Ingeniería Automotriz</p>
+            </li>
+            <li class="border-l border-white/20 pl-4">
+              <p class="font-bold">Certificación Avanzada</p>
+              <p class="text-sm opacity-80">RWTH Aachen University (Alemania) - Battery Production</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
