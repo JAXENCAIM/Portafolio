@@ -34,7 +34,7 @@ const projects = await getCollection('projects');
 			</div>
 		</div>
 
-		<div id="horizontal-wrapper" class="flex flex-col md:flex-nowrap md:h-screen">
+		<div id="horizontal-wrapper" class="flex flex-col md:flex-row md:flex-nowrap md:h-screen">
 			<Hero />
 			
 			{projects.map((project) => (
